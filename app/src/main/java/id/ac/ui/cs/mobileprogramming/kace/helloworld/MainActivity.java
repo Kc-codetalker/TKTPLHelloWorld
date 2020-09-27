@@ -75,10 +75,4 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Mau Kedestroy nih", "onDestroy deh");
         super.onDestroy();
     }
-
-    @Override
-    public void onConfigurationChanged (Configuration newConfig) {
-        Log.d("Yeay!!!", "Auto rotate Kehandle, ga kena onDestroy deh");
-        super.onConfigurationChanged(newConfig);
-    }
 }
