@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        if (savedInstanceState != null) {
+            TextView textView = findViewById(R.id.textView);
+            String helloStr = savedInstanceState.getString("STATE_HELLO");
+            textView.setText(helloStr);
+        }
     }
 
     @Override
@@ -74,5 +80,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.d("Mau Kedestroy nih", "onDestroy deh");
         super.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        TextView textView = findViewById(R.id.textView);
+        String helloStr = textView.getText().toString();
+        outState.putString("STATE_HELLO", helloStr);
+        super.onSaveInstanceState(outState);
     }
 }
