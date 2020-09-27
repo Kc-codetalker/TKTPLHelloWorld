@@ -1,5 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.kace.helloworld;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -67,5 +68,17 @@ public class MainActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText("Hello " + message + "!");
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("Mau Kedestroy nih", "onDestroy deh");
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged (Configuration newConfig) {
+        Log.d("Yeay!!!", "Auto rotate Kehandle, ga kena onDestroy deh");
+        super.onConfigurationChanged(newConfig);
     }
 }
