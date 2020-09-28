@@ -10,6 +10,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,12 @@ public class MainActivityInstrumentedTest {
     public ActivityScenarioRule<MainActivity> mActivityRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
+    private static ActivityScenario scenario;
+    @Before
+    public void setUp() {
+        scenario = mActivityRule.getScenario();
+    }
+
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -32,7 +39,6 @@ public class MainActivityInstrumentedTest {
 
     @Test
     public void testOnIncrementButtonPressed() {
-        ActivityScenario scenario = mActivityRule.getScenario();
         scenario.onActivity(new ActivityScenario.ActivityAction() {
             @Override
             public void perform(Activity activity) {
