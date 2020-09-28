@@ -68,4 +68,32 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.setText("Hello " + message + "!");
     }
+
+    public void onIncrementButtonPressed(View view) {
+        Log.d("Button Pressed", "This is INCREMENT button.");
+
+        TextView textView = findViewById(R.id.textView2);
+        String numStr = textView.getText().toString();
+        Integer num = Integer.parseInt(numStr);
+        num = addNum(num, 1);
+        textView.setText(num.toString());
+    }
+
+    public void onDecrementButtonPressed(View view) {
+        Log.d("Button Pressed", "This is DECREMENT button.");
+
+        TextView textView = findViewById(R.id.textView2);
+        String numStr = textView.getText().toString();
+        Integer num = Integer.parseInt(numStr);
+        num = subtractNum(num, 1);
+        textView.setText(num.toString());
+    }
+
+    public static int addNum(int num, int amount) {
+        return num + amount;
+    }
+
+    public static int subtractNum(int num, int amount) {
+        return num - amount;
+    }
 }
