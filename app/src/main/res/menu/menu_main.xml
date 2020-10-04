@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="id.ac.ui.cs.mobileprogramming.kace.helloworld.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_exit"
         android:orderInCategory="100"
+        android:title="@string/action_exit" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="0"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
