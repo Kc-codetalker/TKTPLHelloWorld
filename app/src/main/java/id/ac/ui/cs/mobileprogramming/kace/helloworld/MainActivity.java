@@ -1,5 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.kace.helloworld;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -7,14 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements BackButtonOverrideDialog.BackButtonOverrideDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_exit) {
+            Log.d("Menu Exit", "Exit is selected");
+            finish();
+        } else if (id == R.id.action_stopwatch) {
+            Log.d("Menu Stopwatch", "Stopwatch is selected");
+            startStopwatchActivity(null);
         }
 
         return super.onOptionsItemSelected(item);
@@ -61,11 +72,53 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Button Pressed", "This is ENTER button.");
 
         // Capture the layout's EditText and get its text
-        EditText editText = (EditText) findViewById(R.id.editText2);
+        EditText editText = findViewById(R.id.editText2);
         String message = editText.getText().toString();
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText("Hello " + message + "!");
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("Hardware Interact", "onBackPressed Called");
+
+        showNoticeToast(null);
+
+        showNoticeDialog();
+    }
+
+    public void showNoticeToast(String msg) {
+        Context context = getApplicationContext();
+        CharSequence text = (msg != null) ? msg: "This is toast! Can't go back.";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void showNoticeDialog() {
+        DialogFragment dialog = new BackButtonOverrideDialog();
+        dialog.show(getSupportFragmentManager(), "BackButtonOverrideDialogFragment");
+    }
+
+    // The dialog fragment receives a reference to this Activity through the
+    // Fragment.onAttach() callback, which it uses to call the following methods
+    // defined by the NoticeDialogFragment.NoticeDialogListener interface
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        Log.d("Tidak jadi back", "Yeay tidak jadi back!!");
+    }
+
+    /** Called when the user taps the Send button */
+    public void startStopwatchActivity(View view) {
+        Intent intent = new Intent(this, StopwatchActivity.class);
+        startActivity(intent);
     }
 }

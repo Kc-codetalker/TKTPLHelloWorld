@@ -3,4 +3,17 @@
     <string name="action_settings">Settings</string>
     <string name="textbox_placeholder">Enter new name</string>
     <string name="button_text">Enter</string>
+    <string name="alert">Alert</string>
+    <string name="back_override_message">Back button has been overridden. Are you sure you want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="action_exit">Exit</string>
+    <string name="title_activity_stopwatch">StopwatchActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
+    <string name="stopwatch">Stopwatch</string>
 </resources>
