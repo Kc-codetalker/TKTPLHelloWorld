@@ -1,6 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.kace.helloworld;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.action_exit) {
             Log.d("Menu Exit", "Exit is selected");
             finish();
+        } else if (id == R.id.action_stopwatch) {
+            Log.d("Menu Stopwatch", "Stopwatch is selected");
+            startStopwatchActivity(null);
         }
 
         return super.onOptionsItemSelected(item);
@@ -79,10 +83,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         Log.d("Hardware Interact", "onBackPressed Called");
-//        Intent setIntent = new Intent(Intent.ACTION_MAIN);
-//        setIntent.addCategory(Intent.CATEGORY_HOME);
-//        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(setIntent);
 
         showNoticeToast(null);
 
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void showNoticeDialog() {
-        // Create an instance of the dialog fragment and show it
         DialogFragment dialog = new BackButtonOverrideDialog();
         dialog.show(getSupportFragmentManager(), "BackButtonOverrideDialogFragment");
     }
@@ -115,5 +114,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         Log.d("Tidak jadi back", "Yeay tidak jadi back!!");
+    }
+
+    /** Called when the user taps the Send button */
+    public void startStopwatchActivity(View view) {
+        Intent intent = new Intent(this, StopwatchActivity.class);
+        startActivity(intent);
     }
 }

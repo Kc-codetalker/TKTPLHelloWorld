@@ -11,4 +11,7 @@
         android:orderInCategory="0"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_stopwatch"
+        android:title="@string/stopwatch" />
 </menu>

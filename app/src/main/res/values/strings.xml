@@ -8,4 +8,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="action_exit">Exit</string>
+    <string name="title_activity_stopwatch">StopwatchActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
+    <string name="stopwatch">Stopwatch</string>
 </resources>
