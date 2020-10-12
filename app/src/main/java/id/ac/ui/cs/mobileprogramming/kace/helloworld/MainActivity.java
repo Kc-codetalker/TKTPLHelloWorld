@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -58,18 +56,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /** Called when the user taps the Send button */
-    public void onEnterButtonPressed(View view) {
-        Log.d("Button Pressed", "This is ENTER button.");
-
-        // Capture the layout's EditText and get its text
-        EditText editText = findViewById(R.id.editText2);
-        String message = editText.getText().toString();
-
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView);
-        textView.setText("Hello " + message + "!");
     }
 }
