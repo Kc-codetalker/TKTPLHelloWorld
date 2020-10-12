@@ -89,11 +89,11 @@ public class QuestionListFragment extends ListFragment implements AdapterView.On
             ((MainActivity) getActivity()).model.questionResId = resId;
 
             // Start question detail fragment
-//            NextFragment nextFrag= new NextFragment();
-//            getActivity().getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.Layout_container, nextFrag, "findThisFragment")
-//                    .addToBackStack(null)
-//                    .commit();
+            QuestionDetail nextFrag= new QuestionDetail();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment, nextFrag, "findThisFragment")
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 
