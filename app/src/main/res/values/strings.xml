@@ -1,6 +1,41 @@
 <resources>
     <string name="app_name">Hello World</string>
     <string name="action_settings">Settings</string>
-    <string name="textbox_placeholder">Enter new name</string>
-    <string name="button_text">Enter</string>
+    <string name="textbox_placeholder">Enter your answer</string>
+    <string name="button_text">Answer</string>
+    <string name="Question_1_detail">Siapa nama presiden pertama Republik Indonesia?</string>
+    <string name="Question_2_detail">Berapa hasil dari 12897 + 34560?</string>
+    <string name="Question_3_detail">Apa nama latin dari beruang panda?</string>
+    <string name="Question_4_detail">Siapa penulis seri buku novel Harry Potter?</string>
+    <string name="Question_5_detail">Siapa pemeran Tony Stark atau Iron Man di film Avengers: Endgame?</string>
+    <string name="Question_6_detail">Ada berapa anak anjing pada film 101 Dalmatians?</string>
+    <string name="Question_7_detail">Siapa penemu algoritma shortest path Djikstra?</string>
+    <string name="Question_8_detail">Pada tahun berapa Fakultas Ilmu Komputer Universitas Indonesia didirikan?</string>
+    <string name="Question_9_detail">Kapan episode terakhir anime Naruto: Shippuden tayang di Jepang?</string>
+    <string name="Question_10_detail">Siapa nama pengisi suara Uzumaki Boruto pada seri anime Boruto: Naruto Next Generations?</string>
+    <string name="Question_11_detail">Pada hari apa chapter terakhir manga Yu-Gi-Oh! dirilis di Jepang?</string>
+
+
+    <string-array name="questions">
+        <item>Question 1</item>
+        <item>Question 2</item>
+        <item>Question 3</item>
+        <item>Question 4</item>
+        <item>Question 5</item>
+        <item>Question 6</item>
+        <item>Question 7</item>
+        <item>Question 8</item>
+        <item>Question 9</item>
+        <item>Question 10</item>
+        <item>Question 11</item>
+        <item>Question 12</item>
+        <item>Question 13</item>
+        <item>Question 14</item>
+        <item>Question 15</item>
+        <item>Question 16</item>
+        <item>Question 17</item>
+        <item>Question 18</item>
+        <item>Question 19</item>
+        <item>Question 20</item>
+    </string-array>
 </resources>
