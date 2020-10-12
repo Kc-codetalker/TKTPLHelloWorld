@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 
 
-
-public class QuestionListFragment extends Fragment {
+public class QuestionListFragment extends ListFragment implements AdapterView.OnItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM1 = "param1";
@@ -21,6 +23,8 @@ public class QuestionListFragment extends Fragment {
 //
 //    private OnFragmentInteractionListener mListener;
 //
+    private Toast questionToast;
+
     public QuestionListFragment() {
         // Required empty public constructor
     }
@@ -62,18 +66,20 @@ public class QuestionListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle saveInstanceState) {
         super.onActivityCreated(saveInstanceState);
-//        Toolbar toolbar = ((AppCompatActivity) getActivity()).findViewById(R.id.toolbar);
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.questions, android.R.layout.simple_list_item_1);
+        setListAdapter(adapter);
+        getListView().setOnItemClickListener(this);
+    }
 
-//        Log.d("LOG Masuk", "Sudah masuk ke onCreate");
-//        FloatingActionButton fab = ((AppCompatActivity) getActivity()).findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "This is a snackbar", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String item = getListView().getItemAtPosition(position).toString();
+        if (this.questionToast != null) {
+            this.questionToast.cancel();
+        }
+        this.questionToast = Toast.makeText(getActivity(), "Item: " + item, Toast.LENGTH_SHORT);
+        this.questionToast.show();
     }
 
 //    @Override
