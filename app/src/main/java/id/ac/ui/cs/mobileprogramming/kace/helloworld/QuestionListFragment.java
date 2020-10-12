@@ -98,7 +98,7 @@ public class QuestionListFragment extends ListFragment implements AdapterView.On
     }
 
     private int getQuestionResourceIdFromQuestionName(String questionName) {
-        String questionResKey = questionName.replace(' ', '_');
+        String questionResKey = questionName.replace(' ', '_') + "_detail";
         String packageName = getActivity().getPackageName();
         return getResources().getIdentifier(questionResKey, "string", packageName);
     }
