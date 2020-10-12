@@ -1,6 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.kace.helloworld;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,10 +76,38 @@ public class QuestionListFragment extends ListFragment implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String item = getListView().getItemAtPosition(position).toString();
+
+        int resId = this.getQuestionResourceIdFromQuestionName(item);
+        Log.d("ResId nih", "" + resId);
+
+        String toastMsg;
+        if (resId == 0) {
+            toastMsg = item + " is not available.";
+            this.displayQuestionToast(toastMsg);
+        } else {
+            // Save to view model
+            ((MainActivity) getActivity()).model.questionResId = resId;
+
+            // Start question detail fragment
+//            NextFragment nextFrag= new NextFragment();
+//            getActivity().getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.Layout_container, nextFrag, "findThisFragment")
+//                    .addToBackStack(null)
+//                    .commit();
+        }
+    }
+
+    private int getQuestionResourceIdFromQuestionName(String questionName) {
+        String questionResKey = questionName.replace(' ', '_');
+        String packageName = getActivity().getPackageName();
+        return getResources().getIdentifier(questionResKey, "string", packageName);
+    }
+
+    private void displayQuestionToast(String message) {
         if (this.questionToast != null) {
             this.questionToast.cancel();
         }
-        this.questionToast = Toast.makeText(getActivity(), "Item: " + item, Toast.LENGTH_SHORT);
+        this.questionToast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
         this.questionToast.show();
     }
 

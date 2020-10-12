@@ -4,6 +4,7 @@
     <string name="textbox_placeholder">Enter new name</string>
     <string name="button_text">Enter</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Question_1">Hayo apa</string>
 
     <string-array name="questions">
         <item>Question 1</item>

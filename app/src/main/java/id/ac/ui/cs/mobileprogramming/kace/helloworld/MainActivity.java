@@ -10,11 +10,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    QuestionViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        this.model = new ViewModelProvider(this).get(QuestionViewModel.class);
     }
 
     @Override
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Button Pressed", "This is ENTER button.");
 
         // Capture the layout's EditText and get its text
-        EditText editText = (EditText) findViewById(R.id.editText2);
+        EditText editText = findViewById(R.id.editText2);
         String message = editText.getText().toString();
 
         // Capture the layout's TextView and set the string as its text
