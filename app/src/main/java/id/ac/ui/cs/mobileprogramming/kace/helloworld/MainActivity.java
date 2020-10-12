@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Choose a question.", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Choose a question and answer it.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
