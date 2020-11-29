@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getWifiNames().observe(this, names -> {
+        viewModel.getWifis().observe(this, wifis -> {
+            List<String> names = getWifiNamesFromResults(wifis);
             ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,names);
             ListView listView = findViewById(R.id.wifiList);
             listView.setAdapter(adapter);
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
         boolean success = wifiManager.startScan();
         if (!success) {
-            // scan failure handling
             Log.d("WIFI_SCAN_RESULT", "Start scan fail");
             scanFailure();
         }
@@ -129,24 +129,22 @@ public class MainActivity extends AppCompatActivity {
     private void scanSuccess() {
         List<ScanResult> results = wifiManager.getScanResults();
         Log.d("WIFI_SCAN_RESULT", "Scan results size: " + results.size());
-        setWifiNames(results);
+        viewModel.setWifis(results);
     }
 
     private void scanFailure() {
-        // handle failure: new scan did NOT succeed
-        // consider using old scan results: these are the OLD results!
         List<ScanResult> results = wifiManager.getScanResults();
         Log.d("WIFI_SCAN_RESULT", "Scan results size: " + results.size());
-        setWifiNames(results);
+        viewModel.setWifis(results);
     }
 
-    private void setWifiNames(List<ScanResult> results) {
+    private List<String> getWifiNamesFromResults(List<ScanResult> results) {
         List<String> names = new ArrayList<>();
         for(ScanResult res : results) {
             names.add(res.SSID);
             Log.d("WIFI_SCAN_RESULT", "Wi-Fi name: " + res.SSID);
         }
-        viewModel.setWifiNames(names);
-        Log.d("WIFI_SCAN_RESULT", "View Model list size: " + viewModel.getWifiNames().getValue().size());
+        Log.d("WIFI_SCAN_RESULT", "Wi-Fi name list size: " + viewModel.getWifis().getValue().size());
+        return names;
     }
 }
