@@ -16,12 +16,21 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    static {
+        System.loadLibrary("native-hello-lib");
+    }
+
+    private native String stringFromJNI(String str);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(stringFromJNI("World"));
 
         Log.d("LOG Masuk", "Sudah masuk ke onCreate");
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -66,6 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-        textView.setText("Hello " + message + "!");
+        textView.setText(stringFromJNI(message));
     }
 }
